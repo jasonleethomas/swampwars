@@ -16,6 +16,7 @@ export class Menu extends GameObject {
 
     var i = new Image();
     i.src = 'sprites/fiu.svg';
+    this.schools = [];
     this.schools.push(i);
 
   }
@@ -34,7 +35,7 @@ export class Menu extends GameObject {
       vx - (this.logo.width / 2),
       vy - (this.logo.height / 2));
 
-    context.drawImage()
+    //context.drawImage();
     context.restore();
   }
 }

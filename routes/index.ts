@@ -1,5 +1,3 @@
-/// <reference path="../typings/tsd.d.ts"/>
-
 import * as express from 'express';
 export var index = express.Router();
 
