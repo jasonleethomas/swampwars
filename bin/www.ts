@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
+/// <reference path="../typings/tsd.d.ts"/>
+/// <reference path="../app.ts"/>
+/// <reference path="../io.ts"/>
 
-var app = require('../app');
+import {app} from '../app';
+import {io} from '../io';
+
 var debug = require('debug')('swampwars:server');
 var http = require('http');
 
@@ -20,6 +22,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+io.atach(server);
 
 /**
  * Listen on provided port, on all network interfaces.

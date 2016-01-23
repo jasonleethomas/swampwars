@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 
 import {index} from './routes/index';
 
-var app = express();
+export var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -70,5 +70,3 @@ errorHandler = function(err: any,
 }
 
 app.use(errorHandler);
-
-export = app;
