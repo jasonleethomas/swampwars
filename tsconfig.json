@@ -15,7 +15,9 @@
     "./**/*.ts",
     "./test/**/*.ts",
     "!./jspm_packages/**/*.ts",
-    "!./node_modules/**/*.ts"
+    "!./node_modules/**/*.ts",
+    "!./typings/**/*.ts",
+    "./typings/tsd.d.ts"
   ],
   "compileOnSave": false,
   "buildOnSave": false,
@@ -23,26 +25,14 @@
     "rewriteTsconfig": true
   },
   "files": [
-    "./app/app.ts",
-    "./app/io.ts",
-    "./models/iloro.ts",
-    "./models/loro.ts",
-    "./routes/api.ts",
-    "./routes/client.ts",
+    "./app.ts",
+    "./bin/www.ts",
+    "./io.ts",
+    "./models/bullet.ts",
+    "./models/math.ts",
+    "./models/player.ts",
+    "./models/team.ts",
     "./routes/index.ts",
-    "./typings/express/express.d.ts",
-    "./typings/jade/jade.d.ts",
-    "./typings/mime/mime.d.ts",
-    "./typings/moment/moment-node.d.ts",
-    "./typings/moment/moment.d.ts",
-    "./typings/mongodb/mongodb.d.ts",
-    "./typings/mongoose/mongoose.d.ts",
-    "./typings/node-uuid/node-uuid-base.d.ts",
-    "./typings/node-uuid/node-uuid-cjs.d.ts",
-    "./typings/node-uuid/node-uuid.d.ts",
-    "./typings/node/node.d.ts",
-    "./typings/serve-static/serve-static.d.ts",
-    "./typings/socket.io/socket.io.d.ts",
     "./typings/tsd.d.ts"
   ]
 }

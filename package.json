@@ -3,18 +3,31 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "ts-node ./bin/www.ts"
+    "start": "ts-node ./bin/www.ts",
+    "init": "npm i ; jspm init; jspm install; npm run watch;",
+    "build": "jspm bundle-sfx src/main build.min.js --minify",
+    "watch": "lite-server"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-jasmine": "^2.2.1",
     "gulp-jasmine-node": "^1.0.3",
     "gulp-tsc": "^1.1.4",
-    "jspm": "^0.16.19",
     "run-sequence": "^1.1.5",
     "ts-node": "^0.5.5",
     "tsd": "^0.6.5",
+    "browser-sync": "^2.11.1",
+    "jspm": "^0.16.19",
+    "lite-server": "^1.3.4",
     "typescript": "^1.6.2"
+  },
+  "jspm": {
+    "dependencies": {
+      "ts": "github:frankwallis/plugin-typescript@^2.4.9"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
   },
   "dependencies": {
     "body-parser": "^1.14.2",

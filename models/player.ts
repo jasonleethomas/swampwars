@@ -1,6 +1,3 @@
-/// <reference path="../typings/tsd.d.ts"/>
-/// <reference path="./math.ts"/>
-
 import * as uuid from 'node-uuid'
 import {Vector}  from './math'
 import {Team} from './team'
@@ -10,7 +7,7 @@ export class Player{
   position: Vector;
   constructor(public team: Team)
   {
-    this.id = uuid.v4(); 
+    this.id = uuid.v4();
     this.position = {
       x: Math.floor((Math.random() * 640)),
       y: Math.floor((Math.random() * 360)),

@@ -1,8 +1,3 @@
-/// <reference path="./typings/socket.io/socket.io.d.ts"/>
-/// <reference path="./models/player.ts"/>
-/// <reference path="./models/math.ts"/>
-/// <reference path="./models/bullet.ts"/>
-
 import * as SocketIO from 'socket.io';
 import {Vector} from './models/math'
 import {Player} from './models/player'

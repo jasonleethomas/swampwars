@@ -1,5 +1,3 @@
-/// <reference path="./typings/tsd.d.ts"/>
-
 import * as express from 'express';
 
 var path = require('path');
@@ -22,8 +20,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+// Send Static Files
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/jspm_packages', express.static(__dirname + '/jspm_packages'));
+app.use('/config.js',function (req, res) {
+  res.sendFile(__dirname + '/config.js');
+});
 app.use('/', index);
 
 // catch 404 and forward to error handler
@@ -39,9 +42,9 @@ app.use(function(req, res, next) {
 // will print stacktrace
 
 var devHandler: express.ErrorRequestHandler;
-devHandler = function(err: any, 
-                      req: express.Request, 
-                      res: express.Response, 
+devHandler = function(err: any,
+                      req: express.Request,
+                      res: express.Response,
                       next: Function) {
   res.status(err.status || 500);
   res.render('error', {
@@ -58,9 +61,9 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 
 var errorHandler: express.ErrorRequestHandler;
-errorHandler = function(err: any, 
-                        req: express.Request, 
-                        res: express.Response, 
+errorHandler = function(err: any,
+                        req: express.Request,
+                        res: express.Response,
                         next: Function) {
   res.status(err.status || 500);
   res.render('error', {
