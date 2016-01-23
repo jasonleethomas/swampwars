@@ -9,15 +9,12 @@
     "watch": "lite-server"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "gulp": "^3.9.0",
     "gulp-jasmine": "^2.2.1",
     "gulp-jasmine-node": "^1.0.3",
     "gulp-tsc": "^1.1.4",
     "run-sequence": "^1.1.5",
-=======
     "jspm": "^0.16.19",
->>>>>>> d75d1f63912f7c0f09f21cdfacec4b40a2a841b3
     "ts-node": "^0.5.5",
     "tsd": "^0.6.5",
     "browser-sync": "^2.11.1",
