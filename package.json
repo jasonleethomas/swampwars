@@ -1,17 +1,35 @@
 {
-  "name": "swampwars",
+  "name": "loro",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "ts-node ./bin/www"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jasmine": "^2.2.1",
+    "gulp-jasmine-node": "^1.0.3",
+    "gulp-tsc": "^1.1.4",
+    "jspm": "^0.16.19",
+    "run-sequence": "^1.1.5",
+    "ts-node": "^0.5.5",
+    "tsd": "^0.6.5",
+    "typescript": "^1.6.2"
   },
   "dependencies": {
-    "body-parser": "~1.13.2",
-    "cookie-parser": "~1.3.5",
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.0",
     "debug": "~2.2.0",
-    "express": "~4.13.1",
+    "express": "~5.0.0-alpha.2",
     "jade": "~1.11.0",
+    "moment": "^2.11.0",
+    "mongodb": "^2.1.3",
+    "mongoose": "^4.3.4",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "node-uuid": "^1.4.7",
+    "request": "^2.67.0",
+    "serve-favicon": "~2.3.0",
+    "socket.io": "^1.3.7",
+    "socket.io-client": "^1.4.4"
   }
 }
