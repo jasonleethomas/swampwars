@@ -1,21 +1,20 @@
 /// <reference path="../typings/tsd.d.ts"/>
 /// <reference path="./math.ts"/>
 
-import * as mongoose from 'mongoose'
-import {Vector2D}  from './math'
+import * as uuid from 'node-uuid'
+import {Vector}  from './math'
+import {Team} from './team'
 
-export interface IPlayer {
-  position: Vector2D
-}
-
-export interface IPlayerModel extends IPlayer, mongoose.Document {}
-
-export var PlayerSchema = new mongoose.Schema({
-  position: {
-    x: Number,
-    y: Number,
-    angle: Number
+export class Player{
+  id: string;
+  position: Vector;
+  constructor(public team: Team)
+  {
+    this.id = uuid.v4(); 
+    this.position = {
+      x: Math.floor((Math.random() * 640)),
+      y: Math.floor((Math.random() * 360)),
+      angle: 0
+    }
   }
-});
-
-export var Player = mongoose.model('Player', PlayerSchema);
+};

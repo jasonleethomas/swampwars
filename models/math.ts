@@ -1,4 +1,4 @@
-export interface Vector2D {
+export interface Vector {
   x: number,
   y: number,
   angle: number
