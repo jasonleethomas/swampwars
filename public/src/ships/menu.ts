@@ -34,7 +34,7 @@ export class Menu extends GameObject {
       vx - (this.logo.width / 2),
       vy - (this.logo.height / 2));
 
-    context.drawImage()
+    //context.drawImage();
     context.restore();
   }
 }
