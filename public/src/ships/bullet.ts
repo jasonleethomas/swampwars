@@ -1,12 +1,15 @@
 import {GameObject} from '../lib/gameobject';
-import {GameSocket} from '../lib/socket'
+import {GameSocket} from '../lib/socket';
+import {Collision} from '../lib/math/collision';
 import {Scene} from '../lib/scene';
+import {Player} from './player';
 
 export class Bullet extends GameObject {
   xprev: number;
   yprev: number;
-  constructor(x: number, y: number, public xSpd: number, public ySpd: number, public color: number, public damage: number) {
+  constructor(team: number, x: number, y: number, public xSpd: number, public ySpd: number) {
     super();
+    this.team = team;
     this.position.x = x;
     this.position.y = y;
     this.xprev = x;
@@ -21,20 +24,25 @@ export class Bullet extends GameObject {
 
     //if (this === window) return new Bullet(x, y, xSpd, ySpd, color, damage);
   }
+
   update(socket: GameSocket, scene:Scene) {
     this.xprev = this.position.x;
     this.yprev = this.position.y;
     this.position.x += this.xSpd;
     this.position.y += this.ySpd;
-<<<<<<< HEAD
-    if (this.position.x > scene.width) {
-=======
-    
-    // transmit updates to network
     socket.updateObject(this);
 
-    if (this.position.x > scene.bounds.x2) {
->>>>>>> 63aa4203d6a3b99e9478916891aec435180729d8
+    var collidedWith: GameObject[] = new Collision().box(scene, this.position.x, this.position.y, this.hitbox.x, this.hitbox.y);
+    var playersHit = collidedWith.filter((o) => {
+        return (typeof(o) == 'Player' && o.team != this.team);
+    });
+
+    playersHit.map((o) => {
+      scene.destroy(o)
+      socket.destroyObject(o);
+    });
+
+    if (this.position.x > scene.width) {
       scene.destroy(this);
       socket.destroyObject(this);
     }

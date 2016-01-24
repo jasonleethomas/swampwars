@@ -31,6 +31,7 @@ System.config({
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",
+    "node-uuid": "npm:node-uuid@1.4.7",
     "socket.io": "npm:socket.io@1.4.4",
     "socket.io-client": "npm:socket.io-client@1.4.4",
     "ts": "github:frankwallis/plugin-typescript@2.4.9",
@@ -382,6 +383,10 @@ System.config({
     },
     "npm:mime-types@2.0.14": {
       "mime-db": "npm:mime-db@1.12.0"
+    },
+    "npm:node-uuid@1.4.7": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "crypto": "github:jspm/nodelibs-crypto@0.1.0"
     },
     "npm:options@0.0.6": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"

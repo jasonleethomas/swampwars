@@ -44,7 +44,6 @@
     "./public/src/main.ts",
     "./public/src/menu/menu.ts",
     "./public/src/ships/bullet.ts",
-    "./public/src/ships/menu.ts",
     "./public/src/ships/netplayer.ts",
     "./public/src/ships/player.ts",
     "./typings/tsd.d.ts"

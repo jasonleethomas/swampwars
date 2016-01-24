@@ -1,4 +1,5 @@
 import {GameObject} from '../lib/gameobject';
+import {GameSocket} from '../lib/socket'
 import {Scene} from '../lib/scene';
 import {Easing} from '../lib/math/easing';
 import {Clock} from '../lib/clock';
@@ -20,20 +21,19 @@ export class Menu extends GameObject {
   constructor() {
     super();
     this.logo = new Image();
-    this.logo.src = 'sprites/logo.png';
+    this.logo.src = '../sprites/logo.png';
 
     this.fiu = new Image();
-    this.fiu.src = 'sprites/fiu.png';
+    this.fiu.src = '../sprites/fiu.png';
     this.uf = new Image();
-    this.uf.src = 'sprites/uf.png';
+    this.uf.src = '../sprites/uf.png';
     this.usf = new Image();
-    this.usf.src = 'sprites/usf.png';
+    this.usf.src = '../sprites/usf.png';
     this.ucf = new Image();
-    this.ucf.src = 'sprites/ucf.png';
-
-
+    this.ucf.src = '../sprites/ucf.png';
   }
-  update(scene: Scene, input: Input) {
+
+  update(socket: GameSocket, scene: Scene, input: Input) {
     this.scene = scene;
     var deltaTime = this.clock.deltaTime();
     this.alpha = Easing.easeOutExpo(this.clock.getElapsedTime(), 0, 1, 1);
@@ -43,11 +43,18 @@ export class Menu extends GameObject {
       if (input.mousePosition().y > 296) {
         var team = Math.floor(input.mousePosition().x / (scene.viewport.width / 2));
         console.log(team);
-        scene.add(new Player(team));
+        var player = new Player(team, {
+          x: Math.floor(Math.random() * scene.width),
+          y: Math.floor(Math.random() * scene.height)
+        });
+
+        scene.add(player);
+        socket.addObject(player);
         scene.destroy(this);
       }
     }
   }
+
   render(context: CanvasRenderingContext2D) {
     var vx = this.scene.viewport.position.x + (this.scene.viewport.width / 2);
     var vy = this.scene.viewport.position.y + (this.scene.viewport.height / 2);

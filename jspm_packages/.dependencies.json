@@ -582,5 +582,9 @@
     "systemjs-json": "github:systemjs/plugin-json@^0.1.0",
     "fs": "github:jspm/nodelibs-fs@^0.1.0",
     "path": "github:jspm/nodelibs-path@^0.1.0"
+  },
+  "npm:node-uuid@1.4.7": {
+    "crypto": "github:jspm/nodelibs-crypto@^0.1.0",
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0"
   }
 }

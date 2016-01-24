@@ -5,8 +5,7 @@ export interface Hitbox {
   height: number;
 }
 
-import * as uuid from '../../javascripts/node-uuid/uuid';
-
+import * as uuid from 'node-uuid';
 import {Scene} from './scene';
 import {Input} from './input';
 import {GameSocket} from './socket'
@@ -17,6 +16,8 @@ import {GameSocket} from './socket'
 export abstract class GameObject {
 
   public id: string = uuid.v4();
+
+  public team: number;
 
   //Position of GameObject.
   public position: { x: number, y: number } = { x: 0, y: 0 };

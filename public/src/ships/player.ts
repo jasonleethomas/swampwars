@@ -26,17 +26,13 @@ export class Player extends GameObject {
 
   //Ship Guns
   private gunTimer: number = 0;
-<<<<<<< HEAD
-  private gunReloadTime = .1;
+  private gunReloadTime: number = .1;
 
   //Spray
   private spray: HTMLImageElement = new Image();
-  constructor(public team = 0) {
-=======
-  private gunReloadTime = .3;
-  constructor(position: { x: number, y: number }) {
->>>>>>> 63aa4203d6a3b99e9478916891aec435180729d8
+  constructor(public team = 0, position: { x: number, y: number }) {
     super();
+    this.team = team;
     //Transform
     this.position = position;
 
@@ -54,7 +50,7 @@ export class Player extends GameObject {
     if (input.getKey('Space')) {
       if (this.gunTimer < 0) {
         this.gunTimer = this.gunReloadTime;
-        var bullet = new Bullet(this.position.x, this.position.y, Math.cos(this.rotation * (Math.PI / 180)) * 16, -Math.sin(this.rotation * (Math.PI / 180)) * 16, 0, 0); 
+        var bullet = new Bullet(this.position.x, this.position.y, Math.cos(this.rotation * (Math.PI / 180)) * 16, -Math.sin(this.rotation * (Math.PI / 180)) * 16, this.team);
         scene.add(bullet);
         socket.addObject(bullet);
       }
@@ -80,7 +76,7 @@ export class Player extends GameObject {
     this.velocity.y = deltaTime * this.spd * -Math.sin(this.rotation * (Math.PI / 180));
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
-    
+
     socket.updateObject(this);
 
     //Sync Viewport with Screen
