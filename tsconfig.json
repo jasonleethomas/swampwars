@@ -37,16 +37,18 @@
     "./public/src/lib/input.ts",
     "./public/src/lib/input/keyboard.ts",
     "./public/src/lib/input/mouse.ts",
+    "./public/src/lib/input/touch.ts",
+    "./public/src/lib/math/collision.ts",
     "./public/src/lib/math/easing.ts",
     "./public/src/lib/math/mathex.ts",
     "./public/src/lib/renderer.ts",
     "./public/src/lib/scene.ts",
     "./public/src/lib/viewport.ts",
     "./public/src/main.ts",
+    "./public/src/menu/menu.ts",
     "./public/src/ships/bullet.ts",
-    "./public/src/ships/menu.ts",
+    "./public/src/ships/netplayer.ts",
     "./public/src/ships/player.ts",
-    "./routes/index.ts",
     "./typings/tsd.d.ts"
   ]
 }

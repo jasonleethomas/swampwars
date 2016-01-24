@@ -3,7 +3,7 @@ import {Viewport} from './viewport';
 export class Scene {
 
 public array:GameObject[];
-  constructor(public viewport: Viewport, public bounds: { x1: number, y1: number, x2: number, y2: number }) {
+  constructor(public viewport: Viewport, public width:number, public height:number) {
     this.array = [];
   }
 

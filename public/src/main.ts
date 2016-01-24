@@ -1,7 +1,7 @@
 import {Renderer} from './lib/renderer';
 
 import {Player} from './ships/player';
-import {Menu} from './ships/menu';
+import {Menu} from './menu/menu';
 
 let renderer, viewport;
 

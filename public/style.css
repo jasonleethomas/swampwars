@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'PixelFont';
+  src: url('misc/pxfont.ttf') format('truetype');
+}
 html, body {
   margin: 0;
   padding: 0;
@@ -8,6 +12,8 @@ html, body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: 'PixelFont', Fallback, sans-serif;
+  color: #fff;
 }
 canvas {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);

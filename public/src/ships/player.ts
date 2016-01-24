@@ -21,18 +21,23 @@ export class Player extends GameObject {
   public deacc = 12;
   public spdMax = 256;
   private clock: Clock = new Clock();
+  private prevDir = 1;
 
   //Ship Guns
   private gunTimer: number = 0;
-  private gunReloadTime = .3;
-  constructor() {
+  private gunReloadTime = .1;
+
+  //Spray
+  private spray: HTMLImageElement = new Image();
+  constructor(public team = 0) {
     super();
     //Transform
     this.position = { x: 128, y: 128 };
 
     //Sprites
     this.sprites = new Image();
-    this.sprites.src = 'sprites/ship.png';
+    this.sprites.src = 'sprites/mascot.png';
+    this.spray.src = 'sprites/spray.png';
   }
 
   update(scene: Scene, input: Input) {
@@ -57,6 +62,7 @@ export class Player extends GameObject {
     if (u || l || d || r) {
       this.spd = MathEx.clamp(this.spd + this.acc, 0, this.spdMax);
       this.rotation += MathEx.angleDifference(keyAngle, this.rotation) / (this.spd / 16);
+      this.prevDir = this.velocity.x > 0 ? 1 : -1;
     } else {
       this.spd = MathEx.clamp(this.spd - this.deacc, 0, this.spdMax);
     }
@@ -75,8 +81,10 @@ export class Player extends GameObject {
   render(context: CanvasRenderingContext2D) {
     context.save();
     context.translate(this.position.x, this.position.y)
-    context.rotate(-this.rotation * (Math.PI / 180));
-    context.drawImage(this.sprites, 0, 0, 16, 16, -8, -8, 16, 16);
+
+    context.scale(this.prevDir, 1);
+    context.drawImage(this.sprites, this.team * 48, 0, 48, 48, -24, -24, 48, 48);
+    context.drawImage(this.spray, (Math.floor(this.clock.getElapsedTime() * 4) % 4) * 32, 0, 32, 32, -48, -16, 32, 32);
     context.restore();
   }
 }

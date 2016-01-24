@@ -24,7 +24,7 @@ export class Bullet extends GameObject {
     this.yprev = this.position.y;
     this.position.x += this.xSpd;
     this.position.y += this.ySpd;
-    if (this.position.x > scene.bounds.x2) {
+    if (this.position.x > scene.width) {
       scene.destroy(this);
     }
   }

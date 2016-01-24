@@ -30,12 +30,4 @@ export abstract class GameObject {
 
   abstract update(scene ?:Scene, input ?: Input);
   abstract render(context:CanvasRenderingContext2D);
-  isColliding(target: GameObject) {
-    return (
-      this.position.x + this.hitbox.x < target.position.x + target.hitbox.x + target.hitbox.width && 	//AL to BR.
-      this.position.x + this.hitbox.x + this.hitbox.width > target.position.x + target.hitbox.x && 			//AR to BL.
-      this.position.y + this.hitbox.y < target.position.y + target.hitbox.y + target.hitbox.height &&   //AT to BB.
-      this.position.y + this.hitbox.y + this.hitbox.height > target.position.y + target.hitbox.y        //AB to BT.
-      );
-  }
 }

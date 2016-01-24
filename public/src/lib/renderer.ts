@@ -20,22 +20,27 @@ export class Renderer {
 
     //Initialize Singletons
     this.input = new Input(this.canvas);
-    this.scene = new Scene(new Viewport(),{ x1: 0, y1: 0, x2: this.canvas.width, y2: this.canvas.height});
+    this.scene = new Scene(new Viewport(), 800, 800);
+
   }
 
   //Refreshes the screen with everything in the scene.
   render() {
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.context.save();
     //Viewport
-    this.context.setTransform(1, 0, 0, 1, -this.scene.viewport.position.x, -this.scene.viewport.position.y);
-    //Defaults
+    this.context.translate(-this.scene.viewport.position.x, -this.scene.viewport.position.y);
+    this.context.clearRect(this.scene.viewport.position.x, this.scene.viewport.position.y, this.scene.viewport.width, this.scene.viewport.height);
+
     this.context.fillStyle = '#9eb254';
-    this.context.fillRect(this.scene.bounds.x1, this.scene.bounds.y1, this.scene.bounds.x2, this.scene.bounds.y2);
+    this.context.fillRect(this.scene.viewport.position.x, this.scene.viewport.position.y, this.scene.width, this.scene.height);
+
 
     //Render Scene
     this.scene.array.map((o) => {
       o.update(this.scene, this.input);
       o.render(this.context);
     });
+
+    this.context.restore();
   }
 }
