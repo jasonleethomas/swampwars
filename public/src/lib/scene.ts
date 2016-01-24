@@ -12,6 +12,6 @@ public array:GameObject[];
     this.array = this.array.filter( (v) => { return v !== gameObject;});
   }
   add(gameObject) {
-    this.array.push(gameObject);
+    this.array[gameObject.id] = gameObject;
   }
 }

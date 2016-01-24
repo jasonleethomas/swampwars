@@ -41,6 +41,7 @@
     "./public/src/lib/math/mathex.ts",
     "./public/src/lib/renderer.ts",
     "./public/src/lib/scene.ts",
+    "./public/src/lib/socket.ts",
     "./public/src/lib/viewport.ts",
     "./public/src/main.ts",
     "./public/src/ships/bullet.ts",

@@ -1,4 +1,5 @@
 import {GameObject} from '../lib/gameobject';
+import {GameSocket} from '../lib/socket';
 import {Scene} from '../lib/scene';
 import {Input} from '../lib/input';
 import {MathEx} from '../lib/math/mathex';
@@ -25,17 +26,17 @@ export class Player extends GameObject {
   //Ship Guns
   private gunTimer: number = 0;
   private gunReloadTime = .3;
-  constructor() {
+  constructor(position: { x: number, y: number }) {
     super();
     //Transform
-    this.position = { x: 128, y: 128 };
+    this.position = position;
 
     //Sprites
     this.sprites = new Image();
     this.sprites.src = 'sprites/ship.png';
   }
 
-  update(scene: Scene, input: Input) {
+  update(socket: GameSocket, scene: Scene, input: Input) {
     var deltaTime = this.clock.deltaTime();
 
     //Gun
@@ -43,7 +44,9 @@ export class Player extends GameObject {
     if (input.getKey('Space')) {
       if (this.gunTimer < 0) {
         this.gunTimer = this.gunReloadTime;
-        scene.add(new Bullet(this.position.x, this.position.y, Math.cos(this.rotation * (Math.PI / 180)) * 16, -Math.sin(this.rotation * (Math.PI / 180)) * 16, 0, 0));
+        var bullet = new Bullet(this.position.x, this.position.y, Math.cos(this.rotation * (Math.PI / 180)) * 16, -Math.sin(this.rotation * (Math.PI / 180)) * 16, 0, 0); 
+        scene.add(bullet);
+        socket.addObject(bullet);
       }
     }
 
@@ -66,6 +69,8 @@ export class Player extends GameObject {
     this.velocity.y = deltaTime * this.spd * -Math.sin(this.rotation * (Math.PI / 180));
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
+    
+    socket.updateObject(this);
 
     //Sync Viewport with Screen
     scene.viewport.position.x = this.position.x - (scene.viewport.width / 2);

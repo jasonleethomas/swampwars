@@ -1,4 +1,5 @@
 import {GameObject} from '../lib/gameobject';
+import {GameSocket} from '../lib/socket.ts';
 import {Scene} from '../lib/scene';
 import {Easing} from '../lib/math/easing';
 import {Clock} from '../lib/clock';
@@ -20,7 +21,7 @@ export class Menu extends GameObject {
     this.schools.push(i);
 
   }
-  update(scene: Scene) {
+  update(socket: GameSocket, scene: Scene) {
     this.scene = scene;
     var deltaTime = this.clock.deltaTime();
     this.alpha = Easing.easeOutExpo(this.clock.getElapsedTime(), 0, 1, 1);
