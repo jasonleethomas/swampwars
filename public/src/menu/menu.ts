@@ -1,5 +1,4 @@
 import {GameObject} from '../lib/gameobject';
-import {GameSocket} from '../lib/socket'
 import {Scene} from '../lib/scene';
 import {Easing} from '../lib/math/easing';
 import {Clock} from '../lib/clock';
@@ -7,6 +6,8 @@ import {Input} from '../lib/input';
 
 import {Player} from '../ships/player';
 import {NetPlayer} from '../ships/netplayer';
+
+import {socket} from '../lib/socket'
 
 export class Menu extends GameObject {
   private logo: HTMLImageElement;
@@ -34,7 +35,7 @@ export class Menu extends GameObject {
     this.ucf.src = 'sprites/ucf.png';
   }
 
-  update(socket: GameSocket, scene: Scene, input: Input) {
+  update(scene: Scene, input: Input) {
     this.scene = scene;
     var deltaTime = this.clock.deltaTime();
     this.alpha = Easing.easeOutExpo(this.clock.getElapsedTime(), 0, 1, 1);
@@ -51,7 +52,7 @@ export class Menu extends GameObject {
 
         scene.add(player);
 
-        socket.addObject(new NetPlayer(player.team, player.position));
+        socket.emit('addObject', new NetPlayer(player.team, player.position), scene);
         scene.destroy(this);
       }
     }

@@ -1,11 +1,11 @@
 import {GameObject} from '../lib/gameobject';
-import {GameSocket} from '../lib/socket';
 import {Scene} from '../lib/scene';
 import {Input} from '../lib/input';
 import {MathEx} from '../lib/math/mathex';
 import {Clock} from '../lib/clock';
 import {Bullet} from './bullet';
 
+import {socket} from '../lib/socket';
 /**
  * The player ship.
  */
@@ -40,7 +40,7 @@ export class Ship extends GameObject {
     this.spray.src = 'sprites/spray.png';
   }
 
-  update(socket: GameSocket, scene: Scene, input: Input) {
+  update(scene: Scene, input: Input) {
     var deltaTime = this.clock.deltaTime();
 
     //Gun
@@ -50,7 +50,7 @@ export class Ship extends GameObject {
         this.gunTimer = this.gunReloadTime;
         var bullet = new Bullet(this.team, this.position.x, this.position.y, Math.cos(this.rotation * (Math.PI / 180)) * 16, -Math.sin(this.rotation * (Math.PI / 180)) * 16);
         scene.add(bullet);
-        socket.addObject(bullet);
+        socket.emit('addObject', bullet, scene);
       }
     }
 
@@ -68,7 +68,7 @@ export class Ship extends GameObject {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
 
-    socket.updateObject(this);
+    socket.emit('updateObject', this, scene);
 
     //Sync Viewport with Screen
     scene.viewport.position.x = this.position.x - (scene.viewport.width / 2);

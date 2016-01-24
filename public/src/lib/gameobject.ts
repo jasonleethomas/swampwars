@@ -8,7 +8,7 @@ export interface Hitbox {
 import * as uuid from 'node-uuid';
 import {Scene} from './scene';
 import {Input} from './input';
-import {GameSocket} from './socket'
+import {socket} from './socket'
 
 /**
  * Holds core parameters needed to render/manage a game object.
@@ -34,6 +34,6 @@ export abstract class GameObject {
 
   public sprites: HTMLImageElement;
 
-  abstract update(socket?: GameSocket, scene ?:Scene, input ?: Input);
+  abstract update(scene ?:Scene, input ?: Input);
   abstract render(context:CanvasRenderingContext2D);
 }

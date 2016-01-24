@@ -26,9 +26,6 @@ io.on('connection', function(socket: SocketIO.Socket) {
   });
 });
 
-io.on('addObject', function(msg) {
-  io.emit('addObject', msg);
-});
 /**
  * Listen on provided port, on all network interfaces.
  */

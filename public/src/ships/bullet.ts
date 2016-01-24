@@ -1,8 +1,9 @@
 import {GameObject} from '../lib/gameobject';
-import {GameSocket} from '../lib/socket';
 import {Collision} from '../lib/math/collision';
 import {Scene} from '../lib/scene';
 import {Player} from './player';
+
+import {socket} from '../lib/socket';
 
 export class Bullet extends GameObject {
   xprev: number;
@@ -25,12 +26,13 @@ export class Bullet extends GameObject {
     //if (this === window) return new Bullet(x, y, xSpd, ySpd, color, damage);
   }
 
-  update(socket: GameSocket, scene: Scene) {
+  update(scene: Scene) {
     this.xprev = this.position.x;
     this.yprev = this.position.y;
     this.position.x += this.xSpd;
     this.position.y += this.ySpd;
-    socket.updateObject(this);
+
+    socket.emit('updateObject', this, scene);
 
     var collidedWith: GameObject[] = new Collision().box(scene, this.position.x, this.position.y, this.hitbox.width, this.hitbox.height);
     var playersHit = collidedWith.filter((o) => {
@@ -38,7 +40,7 @@ export class Bullet extends GameObject {
     });
 
     playersHit.map((o) => {
-      socket.destroyObject(o);
+      socket.emit('destroyObject', o, scene);
     });
 
     if (this.position.x < 0 || this.position.y < 0 || this.position.x > scene.width || this.position.y > scene.height) {

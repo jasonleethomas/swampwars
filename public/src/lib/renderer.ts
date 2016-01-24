@@ -1,5 +1,4 @@
 import {GameObject} from './gameobject';
-import {GameSocket} from './socket';
 import {Scene} from './scene';
 import {Input} from './input';
 import {Viewport} from './viewport';
@@ -12,7 +11,6 @@ export class Renderer {
   public context: CanvasRenderingContext2D;
   public input: Input;
   public scene: Scene;
-  public socket: GameSocket;
   constructor() {
     this.canvas = document.createElement('canvas');
     this.canvas.tabIndex = 1;
@@ -24,7 +22,6 @@ export class Renderer {
     //Initialize Singletons
     this.input = new Input(this.canvas);
     this.scene = new Scene(new Viewport(), 800, 800);
-    this.socket = new GameSocket(this.scene);
   }
 
   //Refreshes the screen with everything in the scene.
@@ -40,13 +37,10 @@ export class Renderer {
     this.context.fillRect(0, 0, this.scene.width, this.scene.height);
     //console.log(this.scene.array);
     //Render Scene
-    Object.keys(this.scene.array).map((key) => {
-      if (this.scene.array[key] != undefined && this.scene.array.hasOwnProperty(key)) {
-        this.scene.array[key].update(this.socket, this.scene, this.input);
-        //Draw call may not exist after update.
-        if (this.scene.array[key] !== undefined)
-          this.scene.array[key].render(this.context);
-      }
+    this.scene.array.map((o) => {
+        o.update(this.scene, this.input);
+      //Draw call may not exist after update.
+        o.render(this.context);
     });
 
     this.context.restore();

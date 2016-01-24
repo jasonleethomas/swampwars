@@ -1,19 +1,20 @@
 import {Ship} from './ship';
 import {GameObject} from '../lib/gameobject';
-import {GameSocket} from '../lib/socket';
-import {Scene} from '../lib/scene';
 import {Input} from '../lib/input';
 import {MathEx} from '../lib/math/mathex';
 import {Clock} from '../lib/clock';
 import {Bullet} from './bullet';
 
+import {socket} from '../lib/socket';
+
+import {Scene} from '../lib/scene';
 export class Player extends Ship {
   constructor(public team = 0, public position: { x: number, y: number }) {
     super(team, position);
   }
-  update(socket: GameSocket, scene: Scene, input: Input) {
-    super.update(socket, scene, input);
-    socket.updateObject(this);
+  update(scene: Scene, input: Input) {
+    super.update(scene, input);
+    socket.emit('updateObject', this, scene);
     //input.touches().map((finger) => finger.pageX);
     //Keyboard
     var l = input.getKey('ArrowLeft');

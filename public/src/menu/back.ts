@@ -1,7 +1,8 @@
 import {GameObject} from '../lib/gameobject';
-import {GameSocket} from '../lib/socket';
 import {Collision} from '../lib/math/collision';
 import {Scene} from '../lib/scene';
+
+import {socket} from '../lib/socket';
 
 export class Back extends GameObject {
   private scene: Scene;
@@ -13,7 +14,7 @@ export class Back extends GameObject {
     this.generate();
 
   }
-  update(socket: GameSocket, scene: Scene) {
+  update(scene: Scene) {
     this.scene = scene;
   }
   generate() {
