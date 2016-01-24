@@ -37,11 +37,15 @@ export class Renderer {
     this.context.fillStyle = '#9eb254';
     this.context.fillRect(this.scene.viewport.position.x, this.scene.viewport.position.y, this.scene.width, this.scene.height);
 
-
+    console.log(this.scene.array);
     //Render Scene
-    this.scene.array.map((o) => {
-      o.update(this.socket, this.scene, this.input);
-      o.render(this.context);
+    Object.keys(this.scene.array).map((key) => {
+      if (this.scene.array[key] != undefined && this.scene.array.hasOwnProperty(key)) {
+        this.scene.array[key].update(this.socket, this.scene, this.input);
+        //Draw call may not exist after update. 
+        if (this.scene.array[key] !== undefined)
+          this.scene.array[key].render(this.context);
+      }
     });
 
     this.context.restore();

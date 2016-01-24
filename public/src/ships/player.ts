@@ -50,7 +50,7 @@ export class Player extends GameObject {
     if (input.getKey('Space')) {
       if (this.gunTimer < 0) {
         this.gunTimer = this.gunReloadTime;
-        var bullet = new Bullet(this.position.x, this.position.y, Math.cos(this.rotation * (Math.PI / 180)) * 16, -Math.sin(this.rotation * (Math.PI / 180)) * 16, this.team);
+        var bullet = new Bullet(this.team, this.position.x, this.position.y, Math.cos(this.rotation * (Math.PI / 180)) * 16, -Math.sin(this.rotation * (Math.PI / 180)) * 16);
         scene.add(bullet);
         socket.addObject(bullet);
       }

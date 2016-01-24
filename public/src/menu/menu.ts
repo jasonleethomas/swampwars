@@ -21,16 +21,16 @@ export class Menu extends GameObject {
   constructor() {
     super();
     this.logo = new Image();
-    this.logo.src = '../sprites/logo.png';
+    this.logo.src = 'sprites/logo.png';
 
     this.fiu = new Image();
-    this.fiu.src = '../sprites/fiu.png';
+    this.fiu.src = 'sprites/fiu.png';
     this.uf = new Image();
-    this.uf.src = '../sprites/uf.png';
+    this.uf.src = 'sprites/uf.png';
     this.usf = new Image();
-    this.usf.src = '../sprites/usf.png';
+    this.usf.src = 'sprites/usf.png';
     this.ucf = new Image();
-    this.ucf.src = '../sprites/ucf.png';
+    this.ucf.src = 'sprites/ucf.png';
   }
 
   update(socket: GameSocket, scene: Scene, input: Input) {

@@ -2,16 +2,17 @@ import {GameObject} from './gameobject';
 import {Viewport} from './viewport';
 export class Scene {
 
-public array:GameObject[];
-  constructor(public viewport: Viewport, public width:number, public height:number) {
+  public array;
+  constructor(public viewport: Viewport, public width: number, public height: number) {
     this.array = [];
+    console.log(this.array);
   }
 
   //Destroys a given instance in the scene.
-  destroy(gameObject) {
-    this.array = this.array.filter( (v) => { return v !== gameObject;});
+  destroy(gameObject:GameObject) {
+    this.array = this.array.filter((v:GameObject) => { return v.id !== gameObject.id; });
   }
   add(gameObject) {
-    this.array[gameObject.id] = gameObject;
+    this.array.push(gameObject);
   }
 }

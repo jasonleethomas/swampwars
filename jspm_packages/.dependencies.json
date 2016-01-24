@@ -27,8 +27,8 @@
     "has-binary": "npm:has-binary@0.1.7",
     "debug": "npm:debug@2.2.0",
     "events": "github:jspm/nodelibs-events@^0.1.1",
-    "process": "github:jspm/nodelibs-process@^0.1.0",
     "url": "github:jspm/nodelibs-url@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
     "http": "github:jspm/nodelibs-http@^1.7.0",
     "fs": "github:jspm/nodelibs-fs@^0.1.0"
   },
@@ -177,13 +177,13 @@
     "engine.io-parser": "npm:engine.io-parser@1.2.4",
     "accepts": "npm:accepts@1.1.4",
     "http": "github:jspm/nodelibs-http@^1.7.0",
+    "events": "github:jspm/nodelibs-events@^0.1.1",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
     "querystring": "github:jspm/nodelibs-querystring@^0.1.0",
     "url": "github:jspm/nodelibs-url@^0.1.0",
     "fs": "github:jspm/nodelibs-fs@^0.1.0",
     "crypto": "github:jspm/nodelibs-crypto@^0.1.0",
-    "events": "github:jspm/nodelibs-events@^0.1.1",
     "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
-    "process": "github:jspm/nodelibs-process@^0.1.0",
     "zlib": "github:jspm/nodelibs-zlib@^0.1.0"
   },
   "npm:utf8@2.1.0": {
@@ -368,8 +368,8 @@
     "crypto": "github:jspm/nodelibs-crypto@^0.1.0"
   },
   "npm:buffer-xor@1.0.3": {
-    "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
-    "systemjs-json": "github:systemjs/plugin-json@^0.1.0"
+    "systemjs-json": "github:systemjs/plugin-json@^0.1.0",
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0"
   },
   "npm:hash.js@1.0.3": {
     "inherits": "npm:inherits@^2.0.1"
@@ -472,8 +472,8 @@
     "bn.js": "npm:bn.js@^4.0.0",
     "inherits": "npm:inherits@^2.0.1",
     "minimalistic-assert": "npm:minimalistic-assert@^1.0.0",
-    "vm": "github:jspm/nodelibs-vm@^0.1.0",
     "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
+    "vm": "github:jspm/nodelibs-vm@^0.1.0",
     "assert": "github:jspm/nodelibs-assert@^0.1.0"
   },
   "github:jspm/nodelibs-path@0.1.0": {
@@ -568,8 +568,8 @@
     "indexof": "npm:indexof@0.0.1"
   },
   "npm:pako@0.2.8": {
-    "process": "github:jspm/nodelibs-process@^0.1.0",
-    "buffer": "github:jspm/nodelibs-buffer@^0.1.0"
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
   },
   "npm:babel-runtime@5.8.35": {
     "process": "github:jspm/nodelibs-process@^0.1.0"

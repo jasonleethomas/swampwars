@@ -25,26 +25,24 @@ export class Bullet extends GameObject {
     //if (this === window) return new Bullet(x, y, xSpd, ySpd, color, damage);
   }
 
-  update(socket: GameSocket, scene:Scene) {
+  update(socket: GameSocket, scene: Scene) {
     this.xprev = this.position.x;
     this.yprev = this.position.y;
     this.position.x += this.xSpd;
     this.position.y += this.ySpd;
     socket.updateObject(this);
 
-    var collidedWith: GameObject[] = new Collision().box(scene, this.position.x, this.position.y, this.hitbox.x, this.hitbox.y);
+    var collidedWith: GameObject[] = new Collision().box(scene, this.position.x, this.position.y, this.hitbox.width, this.hitbox.height);
     var playersHit = collidedWith.filter((o) => {
-        return (typeof(o) == 'Player' && o.team != this.team);
+      return (typeof (o) == 'Player' && o.team != this.team);
     });
 
     playersHit.map((o) => {
-      scene.destroy(o)
       socket.destroyObject(o);
     });
 
     if (this.position.x > scene.width) {
       scene.destroy(this);
-      socket.destroyObject(this);
     }
   }
   render(context: CanvasRenderingContext2D) {
@@ -54,6 +52,5 @@ export class Bullet extends GameObject {
     context.lineTo(this.xprev, this.yprev);
     context.lineTo(this.position.x, this.position.y);
     context.stroke();
-    //context.fillRect(this.position.x - 2, this.position.y -2, 4, 4);
   }
 }
