@@ -18,10 +18,15 @@ export class Input {
   getKey(key: string) {
     return (this.keyboard.keys[key] === undefined || !this.keyboard.keys[key]) ? false : true;
   }
+  //Mouse
   mousePosition() {
     return this.mouse.mousePosition;
   }
   mouseClick() {
     return this.mouse.mouseClick;
+  }
+  //Touch
+  touches() {
+    return this.touch.touches;
   }
 }
