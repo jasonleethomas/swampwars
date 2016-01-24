@@ -1,7 +1,9 @@
 import {GameObject} from './gameobject';
+import {GameSocket} from './socket';
 import {Scene} from './scene';
 import {Input} from './input';
 import {Viewport} from './viewport';
+
 /**
  * Manages rendering objects on canvas.
  */
@@ -10,6 +12,7 @@ export class Renderer {
   public context: CanvasRenderingContext2D;
   public input: Input;
   public scene: Scene;
+  public socket: GameSocket;
   constructor() {
     this.canvas = document.createElement('canvas');
     this.canvas.tabIndex = 1;
@@ -21,7 +24,7 @@ export class Renderer {
     //Initialize Singletons
     this.input = new Input(this.canvas);
     this.scene = new Scene(new Viewport(), 800, 800);
-
+    this.socket = new GameSocket(this.scene);
   }
 
   //Refreshes the screen with everything in the scene.
@@ -37,7 +40,7 @@ export class Renderer {
 
     //Render Scene
     this.scene.array.map((o) => {
-      o.update(this.scene, this.input);
+      o.update(this.socket, this.scene, this.input);
       o.render(this.context);
     });
 

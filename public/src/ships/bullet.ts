@@ -1,5 +1,7 @@
 import {GameObject} from '../lib/gameobject';
+import {GameSocket} from '../lib/socket'
 import {Scene} from '../lib/scene';
+
 export class Bullet extends GameObject {
   xprev: number;
   yprev: number;
@@ -19,13 +21,22 @@ export class Bullet extends GameObject {
 
     //if (this === window) return new Bullet(x, y, xSpd, ySpd, color, damage);
   }
-  update(scene:Scene) {
+  update(socket: GameSocket, scene:Scene) {
     this.xprev = this.position.x;
     this.yprev = this.position.y;
     this.position.x += this.xSpd;
     this.position.y += this.ySpd;
+<<<<<<< HEAD
     if (this.position.x > scene.width) {
+=======
+    
+    // transmit updates to network
+    socket.updateObject(this);
+
+    if (this.position.x > scene.bounds.x2) {
+>>>>>>> 63aa4203d6a3b99e9478916891aec435180729d8
       scene.destroy(this);
+      socket.destroyObject(this);
     }
   }
   render(context: CanvasRenderingContext2D) {
