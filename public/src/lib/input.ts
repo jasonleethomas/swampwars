@@ -16,7 +16,7 @@ export class Input {
 
   //Keyboard
   getKey(key: string) {
-    return (this.keyboard.keys[key] === undefined || !this.keyboard.keys[key]) ? false : true;
+    return this.keyboard.getKey(key);
   }
   //Mouse
   mousePosition() {

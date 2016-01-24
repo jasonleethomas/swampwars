@@ -42,9 +42,11 @@
     "./public/src/lib/socket.ts",
     "./public/src/lib/viewport.ts",
     "./public/src/main.ts",
+    "./public/src/menu/back.ts",
     "./public/src/menu/menu.ts",
     "./public/src/ships/bullet.ts",
     "./public/src/ships/netplayer.ts",
+    "./public/src/ships/player.ts",
     "./public/src/ships/ship.ts",
     "./typings/tsd.d.ts"
   ]

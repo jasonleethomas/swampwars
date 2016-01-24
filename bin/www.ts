@@ -1,11 +1,5 @@
-#!/usr/bin/env node
-
-/// <reference path="../typings/tsd.d.ts"/>
-/// <reference path="../app.ts"/>
-/// <reference path="../io.ts"/>
-
 import {app} from '../app';
-import {io} from '../io';
+import * as SocketIO from 'socket.io';
 
 var debug = require('debug')('swampwars:server');
 var http = require('http');
@@ -22,8 +16,19 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-io.attach(server);
+var io: SocketIO.Server = SocketIO(http);
 
+io.on('connection', function(socket: SocketIO.Socket) {
+  console.log('connected client');
+  io.emit('requestUpdate');
+  socket.on('disconnect', function() {
+    io.emit('requestUpdate');
+  });
+});
+
+io.on('addObject', function(msg) {
+  io.emit('addObject', msg);
+});
 /**
  * Listen on provided port, on all network interfaces.
  */

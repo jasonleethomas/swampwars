@@ -1,7 +1,8 @@
 import {Renderer} from './lib/renderer';
 
-import {Player} from './ships/player';
+import {Back} from './menu/back';
 import {Menu} from './menu/menu';
+import {Player} from './ships/player';
 
 let renderer, viewport;
 
@@ -11,6 +12,7 @@ function start() {
 }
 
 function createScene() {
+  renderer.scene.add(new Back());
   renderer.scene.add(new Menu());
   //renderer.scene.add(new Player());
 }

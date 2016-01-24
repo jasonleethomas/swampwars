@@ -10,4 +10,7 @@ export class Keyboard {
     keyUpCallback(event) {
       this.keys[event.code] = false;
     }
+    getKey(key: string) {
+      return (this.keys[key] === undefined || !this.keys[key]) ? false : true;
+    }
 }

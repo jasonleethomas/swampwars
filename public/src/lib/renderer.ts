@@ -34,15 +34,16 @@ export class Renderer {
     this.context.translate(-this.scene.viewport.position.x, -this.scene.viewport.position.y);
     this.context.clearRect(this.scene.viewport.position.x, this.scene.viewport.position.y, this.scene.viewport.width, this.scene.viewport.height);
 
-    this.context.fillStyle = '#9eb254';
+    this.context.fillStyle = '#8da143';
     this.context.fillRect(this.scene.viewport.position.x, this.scene.viewport.position.y, this.scene.width, this.scene.height);
-
-    console.log(this.scene.array);
+    this.context.fillStyle = '#9eb254';
+    this.context.fillRect(0, 0, this.scene.width, this.scene.height);
+    //console.log(this.scene.array);
     //Render Scene
     Object.keys(this.scene.array).map((key) => {
       if (this.scene.array[key] != undefined && this.scene.array.hasOwnProperty(key)) {
         this.scene.array[key].update(this.socket, this.scene, this.input);
-        //Draw call may not exist after update. 
+        //Draw call may not exist after update.
         if (this.scene.array[key] !== undefined)
           this.scene.array[key].render(this.context);
       }

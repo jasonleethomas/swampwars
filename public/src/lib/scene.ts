@@ -5,7 +5,7 @@ export class Scene {
   public array;
   constructor(public viewport: Viewport, public width: number, public height: number) {
     this.array = [];
-    console.log(this.array);
+    //console.log(this.array);
   }
 
   //Destroys a given instance in the scene.

@@ -1,5 +1,11 @@
+export interface ITouches {
+  identifier: string,
+  pageX: number,
+  pageY: number
+}
+
 export class Touch {
-  public touches = new Array();
+  public touches:ITouches[] = [];
   constructor(public canvas: HTMLCanvasElement) {
     canvas.addEventListener("touchstart", (e) => this.touchStartCallback(e), false);
     canvas.addEventListener("touchend", (e) => this.touchEndCallback(e), false);

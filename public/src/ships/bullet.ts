@@ -41,7 +41,7 @@ export class Bullet extends GameObject {
       socket.destroyObject(o);
     });
 
-    if (this.position.x > scene.width) {
+    if (this.position.x < 0 || this.position.y < 0 || this.position.x > scene.width || this.position.y > scene.height) {
       scene.destroy(this);
     }
   }

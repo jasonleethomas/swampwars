@@ -6,6 +6,7 @@ import {Clock} from '../lib/clock';
 import {Input} from '../lib/input';
 
 import {Player} from '../ships/player';
+import {NetPlayer} from '../ships/netplayer';
 
 export class Menu extends GameObject {
   private logo: HTMLImageElement;
@@ -40,8 +41,8 @@ export class Menu extends GameObject {
 
     // Spagetti!
     if (input.mouseClick()) {
-      if (input.mousePosition().y > 296) {
-        var team = Math.floor(input.mousePosition().x / (scene.viewport.width / 2));
+      if (input.mousePosition().y > 240) {
+        var team = Math.floor(input.mousePosition().x / (scene.viewport.width / 4));
         console.log(team);
         var player = new Player(team, {
           x: Math.floor(Math.random() * scene.width),
@@ -49,7 +50,8 @@ export class Menu extends GameObject {
         });
 
         scene.add(player);
-        socket.addObject(player);
+
+        socket.addObject(new NetPlayer(player.team, player.position));
         scene.destroy(this);
       }
     }

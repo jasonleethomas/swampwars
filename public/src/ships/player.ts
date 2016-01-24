@@ -13,14 +13,17 @@ export class Player extends Ship {
   }
   update(socket: GameSocket, scene: Scene, input: Input) {
     super.update(socket, scene, input);
-  var l = input.getKey('ArrowLeft');
-  var r = input.getKey('ArrowRight');
-  var u = input.getKey('ArrowUp');
-  var d = input.getKey('ArrowDown');
+    socket.updateObject(this);
+    //input.touches().map((finger) => finger.pageX);
+    //Keyboard
+    var l = input.getKey('ArrowLeft');
+    var r = input.getKey('ArrowRight');
+    var u = input.getKey('ArrowUp');
+    var d = input.getKey('ArrowDown');
 
-  this.nextRotation = MathEx.keyboardAngle(u, l, d, r);
+    this.nextRotation = MathEx.keyboardAngle(u, l, d, r);
 
-  this.moving = (u || l || d || r);
-  this.shooting = input.getKey('Space');
-}
+    this.moving = (u || l || d || r);
+    this.shooting = input.getKey('Space');
+  }
 }
